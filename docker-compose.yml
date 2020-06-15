@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    networks: 
+        - sandbox
+
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - "4040:4040"
+    entrypoint: ngrok http nginx:80
+    networks: 
+        - sandbox
+
+networks:
+    sandbox:
